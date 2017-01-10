@@ -6,12 +6,11 @@ function tick() {
   const now = new Date(Date.now());
 
   const h = now.getHours();
-  const h_angle = (h / 12) * 360 + 90;
-
   const m = now.getMinutes();
-  const m_angle = (m / 60) * 360 + 90;
-
   const s = now.getSeconds();
+
+  const h_angle = ((h / 12) * 360) + ((m / 60) * 30) + 90;
+  const m_angle = ((m / 60) * 360) + ((s / 60) * 6) + 90;
   const s_angle = (s / 60) * 360 + 90;
 
   hand_h.style.transform = `rotate(${h_angle}deg)`;

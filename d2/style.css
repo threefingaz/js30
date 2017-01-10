@@ -22,6 +22,7 @@
     top: 50%;
     box-shadow: 0 0 3px rgba(0, 0, 30, 0.2);
     transform: rotate(90deg);
+    transition: all .05s cubic-bezier(0.1, 2.7, 0.58, 1);
 }
 
 .hand-hours {
