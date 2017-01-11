@@ -108,22 +108,24 @@ const people = [
 // Array.prototype.filter()
 // 1. Filter the list of inventors for those who were born in the 1500's
 const fifteen = inventors.filter(inventor => inventor.year >= 1500 && inventor.year < 1600);
+console.log('1. Filter the list of inventors for those who were born in the 1500s');
 console.table(fifteen);
 
 // Array.prototype.map()
 // 2. Give us an array of the inventors' first and last names
 const names = inventors.map(inventor => `${inventor.first} ${inventor.last}`);
-console.log(names);
+console.log('2. Give us an array of the inventors first and last names', names);
 
 // Array.prototype.sort()
 // 3. Sort the inventors by birthdate, oldest to youngest
 const birthdates = inventors.sort((a, b) => a.year - b.year);
+console.log('3. Sort the inventors by birthdate, oldest to youngest');
 console.table(birthdates);
 
 // Array.prototype.reduce()
 // 4. How many years did all the inventors live?
 const live_summ = inventors.reduce((summ, person) => summ + (person.passed - person.year), 0);
-console.log(live_summ);
+console.log('4. How many years did all the inventors live?', live_summ);
 
 // 5. Sort the inventors by years lived
 const livespan = inventors.sort((a, b) => {
@@ -131,6 +133,7 @@ const livespan = inventors.sort((a, b) => {
         ? -1
         : 1;
 });
+console.log('5. Sort the inventors by years lived');
 console.table(livespan);
 
 // 6. create a list of Boulevards in Paris that contain 'de' anywhere in the name
@@ -140,7 +143,7 @@ const boulevards = Array.from(document.querySelectorAll('.boulevards .mw-categor
 const de = boulevards
             .map(street => street.innerText)
             .filter(street => street.includes('de '));
-console.log(de);
+console.log('6. create a list of Boulevards in Paris that contain "de" anywhere in the name', de);
 
 // 7. sort Exercise
 // Sort the people alphabetically by last name
@@ -149,7 +152,7 @@ const abc = people.sort((a, b) => {
     const [b_first, b_last] = b.split(', ');
     return a_last > b_last ? 1 : -1;
 });
-console.log(abc);
+console.log('7. Sort the people alphabetically by last name',abc);
 
 // 8. Reduce Exercise
 // Sum up the instances of each of these
@@ -174,4 +177,4 @@ const data_instances = data.reduce((result, item) => {
     result[item] += 1;
     return result;
 }, {});
-console.log(data_instances);
+console.log('8. Sum up the instances of each of these', data_instances);

@@ -1,2 +1,2 @@
 # JS Coding Challenge
-alnikitin.com/js30
+http://alnikitin.com/js30
