@@ -17,26 +17,26 @@ let hue = 0;
 let direction = true;
 
 function draw(e) {
-  if (!drawing) return;
+    if(!drawing) return;
 
-  ctx.strokeStyle = `hsl(${hue}, 100%, 50%)`;
-  ctx.beginPath();
-  ctx.moveTo(last_x, last_y);
-  ctx.lineTo(e.offsetX, e.offsetY);
-  ctx.stroke();
+    ctx.strokeStyle = `hsl(${hue}, 100%, 50%)`;
+    ctx.beginPath();
+    ctx.moveTo(last_x, last_y);
+    ctx.lineTo(e.offsetX, e.offsetY);
+    ctx.stroke();
 
-  [last_x, last_y] = [e.offsetX, e.offsetY];
+    [last_x, last_y] = [e.offsetX, e.offsetY];
 
-  hue++;
-  if (hue > 360) hue = 0;
-  if (ctx.lineWidth <= 10 || ctx.lineWidth >= 300) direction = !direction;
+    hue++;
+    if(hue > 360) hue = 0;
+    if(ctx.lineWidth <= 10 || ctx.lineWidth >= 300) direction = !direction;
 
-  direction ? ctx.lineWidth++ : ctx.lineWidth --;
+    direction ? ctx.lineWidth++ : ctx.lineWidth--;
 }
 
 canvas.addEventListener('mousemove', draw);
 canvas.addEventListener('mousedown', (e) => {
-  drawing = true;
-  [last_x, last_y] = [e.offsetX, e.offsetY];
+    drawing = true;
+    [last_x, last_y] = [e.offsetX, e.offsetY];
 });
 canvas.addEventListener('mouseup', () => drawing = false);

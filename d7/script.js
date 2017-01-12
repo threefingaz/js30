@@ -24,17 +24,20 @@ console.log('is everyone 19 or older?', all_adults);
 // Find is like filter, but instead returns just the one you are looking for
 // find the comment with the ID of 823423
 const comment = comments.find(comment => comment.id === 823423);
-console.log('find the comment with the ID of 823423', comment);
+console.group('find the comment with the ID of 823423');
+console.log(comment);
+console.groupEnd('find the comment with the ID of 823423');
 
 // Array.prototype.findIndex()
 // Find the comment with this ID
 const comment_index = comments.findIndex(comment => comment.id === 823423);
-console.log('Find the comment with this ID', comment_index);
+console.log('Find the comment with this ID:', comment_index);
 
 // delete the comment with the ID of 823423
 const new_comments = [
   ...comments.slice(0, comment_index),
   ...comments.slice(comment_index + 1)
 ];
-console.log('delete the comment with the ID of 823423');
+console.group('delete the comment with the ID of 823423');
 console.table(new_comments);
+console.groupEnd('delete the comment with the ID of 823423');
