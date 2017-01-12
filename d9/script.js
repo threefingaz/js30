@@ -27,7 +27,7 @@ console.log('How about %s?', '🍻');
 console.log('%cBOOOM💥', 'font: bold 30px sans-serif');
 
 // warning!
-console.warn('Atention!');
+console.warn('Attention!');
 
 // Error :|
 console.error('Ooops!');
