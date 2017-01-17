@@ -1,0 +1,15 @@
+html {
+    font-family: sans-serif;
+}
+ li {
+    border-bottom: 1px solid #efefef;
+    padding: 20px;
+}
+
+li:last-child {
+    border-bottom: 0;
+}
+
+.videos {
+    display: none;
+}
