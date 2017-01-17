@@ -1,6 +1,7 @@
 const add_items = document.querySelector('.add-items');
 const items_list = document.querySelector('.plates');
-const items = JSON.parse(localStorage.getItem('items')) || [];
+const actions = document.querySelector('.actions');
+let items = JSON.parse(localStorage.getItem('items')) || [];
 
 function addItem(e) {
     e.preventDefault();
@@ -35,10 +36,41 @@ function makeList(data, list) {
       </li>
     `;
     }).join('');
+
     list.innerHTML = items;
+}
+
+function checkAll() {
+    items.forEach(item => item.checked = true);
+}
+
+function uncheckAll() {
+    items.forEach(item => item.checked = false);
+}
+
+function removeAll() {
+    items = [];
+}
+
+function listAction(e) {
+    if (!e.target.matches('button')) return;
+    switch (e.target.dataset.action) {
+        case 'checkAll':
+            checkAll();
+            break;
+        case 'uncheckAll':
+            uncheckAll();
+            break;
+        case 'removeAll':
+            removeAll();
+            break;
+    }
+    localStorage.setItem('items', JSON.stringify(items));
+    makeList(items, items_list);
 }
 
 items_list.addEventListener('click', checkItem);
 add_items.addEventListener('submit', addItem);
+actions.addEventListener('click', listAction);
 
 makeList(items, items_list);
