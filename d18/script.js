@@ -4,9 +4,6 @@ const target = document.querySelector('.total_time');
 const totalSeconds = time_items.reduce((total, next) => {
   const [min, sec] = next.dataset.time.split(':').map(parseFloat);
   const seconds = min * 60 + sec;
-
-  let secondsLeft = seconds;
-
   return total + seconds;
 }, 0);
 
@@ -28,6 +25,5 @@ const total = {
   minutes: getMinutes(totalSeconds),
   seconds: getSeconds(totalSeconds)
 }
-
 
 target.innerHTML = `${total.hours}:${total.minutes}:${total.seconds}`;
