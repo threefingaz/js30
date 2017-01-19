@@ -1,5 +1,5 @@
 const msg = new SpeechSynthesisUtterance();
-let voices = [];
+let voiceList = [];
 const dropdown_voices = document.querySelector('[name="voice"]');
 const options = document.querySelectorAll('[type="range"], [name="text"]');
 const button_speak = document.querySelector('#speak');
@@ -8,8 +8,8 @@ const button_stop = document.querySelector('#stop');
 msg.text = document.querySelector('[name="text"]').value;
 
 function populateVoices() {
-    voices = this.getVoices();
-    dropdown_voices.innerHTML = voices
+    voiceList = speechSynthesis.getVoices();
+    dropdown_voices.innerHTML = voiceList
         .filter(voice => {
             return voice.lang.includes('ru') || voice.lang.includes('en')
         })
@@ -28,7 +28,7 @@ function toggleSpeech(restart = true) {
 }
 
 function setVoice() {
-    msg.voice = voices.find(voice => voice.name === dropdown_voices.value);
+    msg.voice = voiceList.find(voice => voice.name === dropdown_voices.value);
     toggleSpeech();
 }
 
@@ -37,8 +37,9 @@ function setOption() {
     toggleSpeech();
 }
 
-speechSynthesis.addEventListener('voiceschanged', populateVoices);
+populateVoices();
 dropdown_voices.addEventListener('change', setVoice);
 options.forEach(option => option.addEventListener('change', setOption));
 button_stop.addEventListener('click', () => toggleSpeech(false));
 button_speak.addEventListener('click', toggleSpeech);
+speechSynthesis.addEventListener('voiceschanged', populateVoices);
